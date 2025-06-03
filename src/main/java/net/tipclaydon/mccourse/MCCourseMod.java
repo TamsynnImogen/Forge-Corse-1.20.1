@@ -13,7 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tipclaydon.mccourse.block.ModBlocks;
-import net.tipclaydon.mccourse.item.ModCreativeModeTabs;
+import net.tipclaydon.mccourse.tab.ModCreativeModeTabs;
 import net.tipclaydon.mccourse.item.ModItems;
 import org.slf4j.Logger;
 
@@ -21,7 +21,7 @@ import org.slf4j.Logger;
 @Mod(MCCourseMod.MOD_ID)
 public class MCCourseMod {
     public static final String MOD_ID = "mccourse";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public MCCourseMod(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
@@ -45,17 +45,9 @@ public class MCCourseMod {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.ALEXANDRITE);
-            event.accept(ModItems.RAW_ALEXANDRITE);
         }
 
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(ModBlocks.ALEXANDRITE_BLOCK);
-            event.accept(ModBlocks.RAW_ALEXANDRITE_BLOCK);
-            event.accept(ModBlocks.DEEPSLATE_ALEXANDRITE_ORE);
-            event.accept(ModBlocks.END_STONE_ALEXANDRITE_ORE);
-            event.accept(ModBlocks.NETHER_ALEXANDRITE_ORE);
-            event.accept(ModBlocks.ALEXANDRITE_ORE);
         }
 
     }

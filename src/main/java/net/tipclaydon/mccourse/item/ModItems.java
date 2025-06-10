@@ -6,8 +6,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tipclaydon.mccourse.MCCourseMod;
-import net.tipclaydon.mccourse.item.custom.FuelItem;
-import net.tipclaydon.mccourse.item.custom.MetalDetectorItem;
+import net.tipclaydon.mccourse.item.custom.*;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS  =
@@ -29,7 +28,7 @@ public class ModItems {
             () -> new FuelItem(new Item.Properties(),200));
 
     public static final RegistryObject<Item> ALEXANDRITE_SWORD = ITEMS.register("alexandrite_sword",
-            () -> new SwordItem(ModToolTiers.ALEXANDRITE,2,3, new Item.Properties().durability(256)));
+            () -> new SlowingSwordItem(ModToolTiers.ALEXANDRITE,2,3, new Item.Properties().durability(256)));
 
     public static final RegistryObject<Item> ALEXANDRITE_PICKAXE = ITEMS.register("alexandrite_pickaxe",
             () -> new PickaxeItem(ModToolTiers.ALEXANDRITE,2,3, new Item.Properties().durability(256)));
@@ -42,6 +41,12 @@ public class ModItems {
 
     public static final RegistryObject<Item> ALEXANDRITE_HOE = ITEMS.register("alexandrite_hoe",
             () -> new HoeItem(ModToolTiers.ALEXANDRITE,2,3, new Item.Properties().durability(256)));
+
+    public static final RegistryObject<Item> ALEXANDRITE_PAXEL = ITEMS.register("alexandrite_paxel",
+            () -> new PaxelItem(ModToolTiers.ALEXANDRITE,2,3, new Item.Properties().durability(256)));
+
+    public static final RegistryObject<Item> ALEXANDRITE_HAMMER = ITEMS.register("alexandrite_hammer",
+            () -> new HammerItem(ModToolTiers.ALEXANDRITE,2,3, new Item.Properties().durability(256)));
 
     public static void register (IEventBus eventbus) {
         ITEMS.register(eventbus);

@@ -13,6 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tipclaydon.mccourse.block.ModBlocks;
+import net.tipclaydon.mccourse.enchantment.ModEnchantments;
 import net.tipclaydon.mccourse.tab.ModCreativeModeTabs;
 import net.tipclaydon.mccourse.item.ModItems;
 import org.slf4j.Logger;
@@ -31,6 +32,7 @@ public class MCCourseMod {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
+        ModEnchantments.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

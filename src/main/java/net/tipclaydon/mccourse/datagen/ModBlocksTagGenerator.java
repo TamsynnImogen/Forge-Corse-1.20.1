@@ -64,8 +64,6 @@ public class ModBlocksTagGenerator extends BlockTagsProvider {
 
     }
 
-
-
     @Override
     public String getName() {
         return "Block Tags";

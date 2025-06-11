@@ -3,6 +3,7 @@ package net.tipclaydon.mccourse.datagen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -12,6 +13,9 @@ import net.minecraftforge.registries.RegistryObject;
 import net.tipclaydon.mccourse.MCCourseMod;
 import net.tipclaydon.mccourse.block.ModBlocks;
 import net.tipclaydon.mccourse.block.custom.AlexandriteLampBlock;
+import net.tipclaydon.mccourse.block.custom.KohlrabiCropBlock;
+
+import java.util.function.Function;
 
 public class ModBlocksStateProvider extends BlockStateProvider {
     public ModBlocksStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -47,6 +51,23 @@ public class ModBlocksStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.ALEXANDRITE_TRAPDOOR,"_bottom");
 
         customLamp();
+
+        makeCrop(((KohlrabiCropBlock) ModBlocks.KOHLRABI_CROP.get()), "kohlrabi_stage", "kohlrabi_stage");
+
+    }
+
+    public  void makeCrop(CropBlock block, String modelName, String textureName) {
+        Function<BlockState, ConfiguredModel[]> function = state -> states(state, block, modelName, textureName);
+
+        getVariantBuilder(block).forAllStates(function);
+    }
+
+    private ConfiguredModel[] states(BlockState state, CropBlock block, String modelName, String textureName) {
+        ConfiguredModel[] models = new ConfiguredModel[1];
+        models[0] = new ConfiguredModel(models().crop(modelName + state.getValue(((KohlrabiCropBlock) block).getAgeProperty()),
+                new ResourceLocation(MCCourseMod.MOD_ID, "block/" + textureName + state.getValue(((KohlrabiCropBlock) block).getAgeProperty()))).renderType("cutout"));
+
+        return models;
     }
 
     private void customLamp() {
@@ -59,6 +80,7 @@ public class ModBlocksStateProvider extends BlockStateProvider {
                         new ResourceLocation(MCCourseMod.MOD_ID, "block/" +"alexandrite_lamp_off")))};
             }
         });
+
         simpleBlockItem(ModBlocks.ALEXANDRITE_LAMP.get(), models().cubeAll("alexandrite_lamp_on",
                 new ResourceLocation(MCCourseMod.MOD_ID,"block/" + "alexandrite_lamp_on")));
     }

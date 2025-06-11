@@ -7,6 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tipclaydon.mccourse.MCCourseMod;
+import net.tipclaydon.mccourse.block.ModBlocks;
 import net.tipclaydon.mccourse.item.custom.*;
 
 public class ModItems {
@@ -66,6 +67,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> DATA_TABLET = ITEMS.register("data_tablet",
             () -> new DataTabletItem(new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> KOHLRABI_SEEDS = ITEMS.register("kohlrabi_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.KOHLRABI_CROP.get(), new Item.Properties()));
 
     public static void register (IEventBus eventbus) {
         ITEMS.register(eventbus);

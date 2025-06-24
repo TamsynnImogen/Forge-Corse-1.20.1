@@ -1,5 +1,10 @@
 package net.tipclaydon.mccourse.event;
 
+import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.server.command.ConfigCommand;
+import net.tipclaydon.mccourse.Command.ReturnHomeCommand;
+import net.tipclaydon.mccourse.Command.SetHomeCommand;
 import net.tipclaydon.mccourse.MCCourseMod;
 import net.tipclaydon.mccourse.item.custom.HammerItem;
 import net.minecraft.core.BlockPos;
@@ -41,5 +46,19 @@ public class ModEvents {
                 HARVESTED_BLOCKS.remove(pos);
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onCommandsRegister(RegisterCommandsEvent event) {
+        new SetHomeCommand(event.getDispatcher());
+        new ReturnHomeCommand(event.getDispatcher());
+
+        ConfigCommand.register(event.getDispatcher());
+    }
+
+    @SubscribeEvent
+    public static void onPlayerCloned(PlayerEvent.Clone event) {
+        event.getEntity().getPersistentData().putIntArray("mccourse.homepos",
+                event.getOriginal().getPersistentData().getIntArray("mccourse.homepos"));
     }
 }

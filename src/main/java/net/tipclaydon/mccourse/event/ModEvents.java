@@ -1,11 +1,16 @@
 package net.tipclaydon.mccourse.event;
 
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.server.command.ConfigCommand;
-import net.tipclaydon.mccourse.Command.ReturnHomeCommand;
-import net.tipclaydon.mccourse.Command.SetHomeCommand;
+import net.tipclaydon.mccourse.command.ReturnHomeCommand;
+import net.tipclaydon.mccourse.command.SetHomeCommand;
 import net.tipclaydon.mccourse.MCCourseMod;
+import net.tipclaydon.mccourse.item.ModItems;
 import net.tipclaydon.mccourse.item.custom.HammerItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -60,5 +65,20 @@ public class ModEvents {
     public static void onPlayerCloned(PlayerEvent.Clone event) {
         event.getEntity().getPersistentData().putIntArray("mccourse.homepos",
                 event.getOriginal().getPersistentData().getIntArray("mccourse.homepos"));
+    }
+
+    @SubscribeEvent
+    public static void livingDamage(LivingDamageEvent event) {
+        if(event.getEntity() instanceof Sheep) {
+            if(event.getSource().getDirectEntity() instanceof Player player) {
+                if(player.getItemInHand(InteractionHand.MAIN_HAND).getItem() == ModItems.ALEXANDRITE_AXE.get()) {
+                    MCCourseMod.LOGGER.info("Sheep was hit with an Alexandrite Axe by " +player.getName().getString());
+                } else if(player.getItemInHand(InteractionHand.MAIN_HAND).getItem() == Items.DIAMOND) {
+                    MCCourseMod.LOGGER.info("Sheep was hit with a Diamond by " +player.getName().getString());
+                } else {
+                    MCCourseMod.LOGGER.info("Sheep was hit with something else by " +player.getName().getString());
+                }
+            }
+        }
     }
 }

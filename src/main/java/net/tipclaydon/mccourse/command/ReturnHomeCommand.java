@@ -1,4 +1,4 @@
-package net.tipclaydon.mccourse.Command;
+package net.tipclaydon.mccourse.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;

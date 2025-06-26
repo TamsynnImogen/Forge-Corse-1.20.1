@@ -19,6 +19,7 @@ import net.tipclaydon.mccourse.block.custom.AlexandriteLampBlock;
 import net.tipclaydon.mccourse.block.custom.KohlrabiCropBlock;
 import net.tipclaydon.mccourse.block.custom.SoundBlock;
 import net.tipclaydon.mccourse.item.ModItems;
+import net.tipclaydon.mccourse.sound.ModSounds;
 
 import java.util.function.Supplier;
 
@@ -84,8 +85,8 @@ public class ModBlocks {
             () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_TRAPDOOR), BlockSetType.IRON));
 
     public static final RegistryObject<Block> ALEXANDRITE_LAMP = registerBlock("alexandrite_lamp",
-            () -> new AlexandriteLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).sound(SoundType.GLASS)
-                    .lightLevel(state -> state.getValue(AlexandriteLampBlock.CLICKED) ? 15 : 0)));
+            () -> new AlexandriteLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).sound(ModSounds.ALEXANDRITE_LAMP_SOUNDS)
+                    .strength(1f).lightLevel(state -> state.getValue(AlexandriteLampBlock.CLICKED) ? 15 : 0)));
 
     public static final RegistryObject<Block> KOHLRABI_CROP = BLOCKS.register("kholrabi_crop",
             () -> new KohlrabiCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noCollission().noOcclusion()));

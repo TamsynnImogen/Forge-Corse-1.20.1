@@ -9,6 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.tipclaydon.mccourse.MCCourseMod;
 import net.tipclaydon.mccourse.block.ModBlocks;
 import net.tipclaydon.mccourse.item.custom.*;
+import net.tipclaydon.mccourse.sound.ModSounds;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS  =
@@ -70,6 +71,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> KOHLRABI_SEEDS = ITEMS.register("kohlrabi_seeds",
             () -> new ItemNameBlockItem(ModBlocks.KOHLRABI_CROP.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> BAR_BRAWL_RECORD = ITEMS.register("bar_brawl_record",
+            () -> new RecordItem(4, ModSounds.BAE_BRAWL, new Item.Properties().stacksTo(1), 2440));
 
     public static void register (IEventBus eventbus) {
         ITEMS.register(eventbus);

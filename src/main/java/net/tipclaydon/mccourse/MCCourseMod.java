@@ -18,6 +18,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tipclaydon.mccourse.block.ModBlocks;
 import net.tipclaydon.mccourse.enchantment.ModEnchantments;
 import net.tipclaydon.mccourse.item.ModItemProperties;
+import net.tipclaydon.mccourse.sound.ModSounds;
 import net.tipclaydon.mccourse.tab.ModCreativeModeTabs;
 import net.tipclaydon.mccourse.item.ModItems;
 import org.slf4j.Logger;
@@ -37,6 +38,7 @@ public class MCCourseMod {
         ModBlocks.register(modEventBus);
 
         ModEnchantments.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

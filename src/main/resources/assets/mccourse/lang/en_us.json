@@ -49,5 +49,10 @@
 
   "tootip.mccourse.metal_detector.tooltip.shift": "Right Click on Blocks to find valuables!",
   "tootip.mccourse.metal_detector.tooltip": "Press §eSHIFT§r for more Information",
-  "tooltip.mccourse.soundblock": "Plays nice sounds when walking or right-clicking."
+  "tooltip.mccourse.soundblock": "Plays nice sounds when walking or right-clicking.",
+
+  "sounds.mccourse.metal_detector_found_ore": "Metal Detector Found an Ore,",
+
+  "item.mccourse.bar_brawl_record": "Bar Brawl Music Disc",
+  "item.mccourse.bar_brawl_record.desc": "Bryan Tech - Bar Brawl (CC0)"
 }
